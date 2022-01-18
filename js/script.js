@@ -15,10 +15,10 @@ BONUS:
 
 
 // eleemnti  del DOM
-const button=document.getElementById('bottone');
-const difficulty=document.getElementById('difficult').value;
-const grid=document.getElementById('grid-container');
 
+const button=document.getElementById('bottone');
+const difficulty=document.getElementById('difficult');
+const grid=document.getElementById('grid-container');
 
 const play = () =>{
     //cambio testo nel bottone
@@ -35,7 +35,7 @@ const play = () =>{
     let totalCells;
     let cellsPerRow;
 
-    switch(difficulty){
+    switch(difficulty.value){
         case '1':
             totalCells = 100;
             break;
@@ -44,6 +44,7 @@ const play = () =>{
             break;
         default:
             totalCells = 81;
+            break;
     }
 
     cellsPerRow = Math.sqrt(totalCells);
@@ -51,9 +52,46 @@ const play = () =>{
 
     const maxAttempts = totalCells - TOTAL_BOMBS;
 
+    
+    //funzioni
+    function getRandomNumber( min, max){
+        return Math.floor(Math.random()  * (max - min +1) + min) ;
+    }
+    const generateCell = (numbers, cellsPerRow) =>{
+        const cell=document.createElement('div');
+        cell.className='cell';
+        cell.innerText= numbers
+        const lenghtCell=`calc(100% / ${cellsPerRow})` ;
+        cell.style.width=lenghtCell;
+        cell.style.height=lenghtCell;
+        return cell;
+    }
 
+    const clickOnCell =(cell, bombs) =>{
+        cell.classList.toggle('clicked')
+    }
 
+    //creo bombe
+    const generateBomb=(totalBombs, totalNumber)=>{
+        const bombs=[];
+        while(bombs.lenth < totalBombs){
+            const bombsNumber=getRandomNumber(1,totalNumber);
+            if(!bombs.includes(bombsNumber)) bombs.push(bombsNumber);
+        }
+        return bombs;
+        
+    }
+    //!logiche di gioco
+    //creo le bombe
+    const bombs=generateBomb(TOTAL_BOMBS, totalCells)
+    //creo le celle
+    for(let i=1; i <= totalCells; i++){
+        const cell = generateCell(i,cellsPerRow);
+        cell.addEventListener('click', (event) => clickOnCell(event.target, bombs))
 
+        grid.appendChild(cell)
+    }
+    
 }
 
 

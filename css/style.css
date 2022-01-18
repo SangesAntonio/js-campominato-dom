@@ -59,12 +59,22 @@
 }
 
 .cell{
-    display: inline-block;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid rgb(112, 112, 112);
     cursor: pointer;
+    background-color: white;
 }
 
 .clicked{
-    background-color: white;
+    background-color: rgb(65, 177, 192);
+}
+
+.bomb{
+    background-color: red;
+}
+
+.safe{
+    background-color: rgb(65, 177, 192);
 }

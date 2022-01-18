@@ -16,18 +16,44 @@ BONUS:
 
 // eleemnti  del DOM
 const button=document.getElementById('bottone');
-const difficulty=document.getElementById('difficult');
+const difficulty=document.getElementById('difficult').value;
 const grid=document.getElementById('grid-container');
 
 
 const play = () =>{
     //cambio testo nel bottone
-    button.innerText= 'Riprova'
+    button.innerText= 'Riprova';
 
     //elimino scritta pre-partita e aggiungo bordo
-    grid.innerText = ' '
-    grid.classList.add('grid')
+    grid.innerText = ' ';
+    grid.classList.add('grid');
      
+    //preparo le varie difficoltà
+    const TOTAL_BOMBS= 16;
+    let attempts = 0;
+
+    let totalCells;
+    let cellsPerRow;
+
+    switch(difficulty){
+        case '1':
+            totalCells = 100;
+            break;
+        case '3':
+            totalCells = 49;
+            break;
+        default:
+            totalCells = 81;
+    }
+
+    cellsPerRow = Math.sqrt(totalCells);
+    console.log(cellsPerRow);
+
+    const maxAttempts = totalCells - TOTAL_BOMBS;
+
+
+
+
 }
 
 

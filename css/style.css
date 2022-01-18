@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*container*/
+
+.container-sm{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(45, 65, 243);
+    padding: 40px;
+    margin-top: 50px;
+    justify-content: center;
+    height: 800px;
+}
+
+/*header*/
+
+.header{
+    margin-top: 20px;
+    height: 70px;
+    line-height: 70px;
+    vertical-align: middle;
+    justify-content: space-between;
+}
+
+.header button{
+    padding-left: 10px ;
+    padding-right: 10px ;
+    height: 30px;
+    border: 1px solid rgb(53, 51, 54);
+}
+
+.header select{
+    padding-left: 10px ;
+    padding-right: 10px ;
+    height: 30px;
+}
+
+.d-flex{
+    display: flex;
+}
+/**Main**/
+
+.grid{
+    flex-wrap: wrap;
+    display: flex;
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgb(196, 241, 72);
+    overflow-y: auto;
+}
+
+.cell{
+    display: inline-block;
+
+    border: 1px solid rgb(112, 112, 112);
+    cursor: pointer;
+}
+
+.clicked{
+    background-color: white;
+}

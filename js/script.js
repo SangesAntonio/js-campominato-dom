@@ -60,6 +60,7 @@ const play = () =>{
     const generateCell = (numbers, cellsPerRow) =>{
         const cell=document.createElement('div');
         cell.className='cell';
+        cell.id=numbers;
         cell.innerText= numbers
         const lenghtCell=`calc(100% / ${cellsPerRow})` ;
         cell.style.width=lenghtCell;
@@ -67,27 +68,52 @@ const play = () =>{
         return cell;
     }
 
-    const clickOnCell =(cell, bombs) =>{
-        cell.classList.toggle('clicked')
+    //vinto o perso
+    const gameOver = (bombs, point, isVictory) =>{
+
+    }
+    //al click faccio cose
+    const clickOnCell =(cell, bombs,number) =>{
+        //impedisce altri click
+        cell.removeEventListener('click', clickOnCell);
+
+       
+        //controllo se è una bomba
+        if(bombs.includes(number)){
+            cell.classList.add('bomb');
+            //!hai perso. da fare
+            gameOver (bombs, attempts, false)
+        }else{
+            cell.classList.add('safe');
+            attempts++;
+        }
+        
+        //verifico se ho vinto
+        if(attempts === maxAttempts){
+            //!hai vinto. da fare
+            gameOver (bombs, attempts, false)
+        }
     }
 
     //creo bombe
-    const generateBomb=(totalBombs, totalNumber)=>{
+    const generateBomb=(totalBombs, totalNumber) => {
         const bombs=[];
-        while(bombs.lenth < totalBombs){
+        while(bombs.length < totalBombs){
             const bombsNumber=getRandomNumber(1,totalNumber);
             if(!bombs.includes(bombsNumber)) bombs.push(bombsNumber);
         }
         return bombs;
-        
     }
+    
+    
     //!logiche di gioco
     //creo le bombe
-    const bombs=generateBomb(TOTAL_BOMBS, totalCells)
+    const bombs=generateBomb(TOTAL_BOMBS, totalCells);
+    console.log(bombs)
     //creo le celle
     for(let i=1; i <= totalCells; i++){
         const cell = generateCell(i,cellsPerRow);
-        cell.addEventListener('click', (event) => clickOnCell(event.target, bombs))
+        cell.addEventListener('click', (event) => clickOnCell(event.target, bombs,i))
 
         grid.appendChild(cell)
     }

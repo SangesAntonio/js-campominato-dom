@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+body{
+    background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/231740/b005400b3e20462c20269c300b2ba71c3d541d6d.jpg);
+}
 
 /*container*/
 
@@ -14,7 +17,8 @@
 .container{
     width: 100%;
     margin: 0 auto;
-    background-color: rgb(45, 65, 243);
+    background-color: rgb(0, 7, 66);
+    border-radius: 15px;
     padding: 40px;
     margin-top: 50px;
     justify-content: center;
@@ -25,25 +29,41 @@
 
 .header{
     margin-top: 20px;
+    font-size: 25px;
     height: 70px;
-    line-height: 70px;
     vertical-align: middle;
     justify-content: space-between;
+    align-items: center;
+    color: yellow;
 }
 
-.header button{
-    padding-left: 10px ;
-    padding-right: 10px ;
-    height: 30px;
-    border: 1px solid rgb(53, 51, 54);
+.header h1{
+  background-color: black;
+  padding: 10px 15px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 10px yellow;
 }
 
 .header select{
-    padding-left: 10px ;
-    padding-right: 10px ;
-    height: 30px;
-}
+    color: yellow;
 
+    background-color: black;
+  padding: 10px 15px;
+  box-shadow: 0px 0px 1px 1px yellow;
+}
+label{
+  border-radius: 15px;
+
+    background-color: black;
+    padding: 10px 15px;
+    box-shadow: 0px 0px 10px 10px yellow;
+}
+button{
+    font-size: 35px;
+    background-color: black;
+    padding: 10px 15px;
+    box-shadow: 0px 0px 10px 10px yellow;
+}
 .d-flex{
     display: flex;
 }
@@ -62,26 +82,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(112, 112, 112);
+    border: 1px solid rgb(167, 204, 3);
     cursor: pointer;
     background-color: white;
+    background-image: linear-gradient(rgb(0, 7, 66), yellow);
 }
 
 .clicked{
     background-color: rgb(65, 177, 192);
     cursor: not-allowed;
+    background-image: linear-gradient(rgb(57, 74, 226), rgb(166, 255, 0));
 }
 
 .bomb{
     background-color: red;
+    background-image: linear-gradient(rgb(226, 57, 57), rgb(255, 166, 0));
     cursor: not-allowed;
 }
 
 .safe{
     cursor: not-allowed;
     background-color: rgb(65, 177, 192);
+    background-image: linear-gradient(rgb(57, 74, 226), rgb(0, 255, 213));
 }
 .message{
     color:rgb(241, 222, 56);
+    text-align: center;
     font-size: 34px;
+    margin-top: 20px;
+    width: 100%;
+    background-color: black;
+  padding: 10px 15px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 10px rgb(248, 158, 12);
+}
+#grid-container h1{
+    font-size: 35px;
+    color: rgb(241, 222, 56);
 }

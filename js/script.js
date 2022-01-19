@@ -83,19 +83,27 @@ const play = () =>{
        
     }
 
+    //disabilito le cell
+    const disableCell = (cell) =>{
+        const clone=cell.cloneNode();
+        clone.innerText=cell.innerText;
+        cell.parentNode.replaceChild(clone,cell);
+        return clone;
+    }
     //al click faccio cose
     const clickOnCell =(cell, bombs,number) =>{
         //impedisce altri click
-        cell.removeEventListener('click', clickOnCell);
-
+        const disabledCell=disableCell(cell)
+        //rimuovo eventi al click
+        
        
         //controllo se è una bomba
         if(bombs.includes(number)){
-            cell.classList.add('bomb');
+            disabledCell.classList.add('bomb');
             //!hai perso. da fare
             gameOver (bombs, attempts, false);
         }else{
-            cell.classList.add('safe');
+            disabledCell.classList.add('safe');
             attempts++;
         }
         
@@ -110,9 +118,10 @@ const play = () =>{
         const cells=document.querySelectorAll('.cell')
         for( let i = 0; i < cells.length; i++){
             const cell= cells[i];
+            const disabledCell=disableCell(cell)
             cell.removeEventListener('click', clickOnCell);
-            const cellNumber=parseInt(cell.innerText);
-            if(bombs.includes(cellNumber)) cell.classList.add('bomb');
+            const cellNumber=parseInt(disabledCell.innerText);
+            if(bombs.includes(cellNumber)) disabledCell.classList.add('bomb');
         }
     }
     //creo bombe

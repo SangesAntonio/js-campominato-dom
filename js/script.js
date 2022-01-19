@@ -70,8 +70,19 @@ const play = () =>{
 
     //vinto o perso
     const gameOver = (bombs, point, isVictory) =>{
+        //faccio comparire tutte le bombe
+        showBombs(bombs);
+        //creo elemento del messaggio
+        const messageElement=document.createElement('h3');
+        messageElement.className='message';
 
+        //creo messaggio
+        const message = isVictory ?  'Complimenti hai vinto' : `Mi dispiace hai perso con ${point} punti`
+        messageElement.innerText=message;
+        grid.appendChild(messageElement);
+       
     }
+
     //al click faccio cose
     const clickOnCell =(cell, bombs,number) =>{
         //impedisce altri click
@@ -82,7 +93,7 @@ const play = () =>{
         if(bombs.includes(number)){
             cell.classList.add('bomb');
             //!hai perso. da fare
-            gameOver (bombs, attempts, false)
+            gameOver (bombs, attempts, false);
         }else{
             cell.classList.add('safe');
             attempts++;
@@ -91,10 +102,19 @@ const play = () =>{
         //verifico se ho vinto
         if(attempts === maxAttempts){
             //!hai vinto. da fare
-            gameOver (bombs, attempts, false)
+            gameOver (bombs, attempts, true)
         }
     }
 
+    const showBombs=(bombs) =>{
+        const cells=document.querySelectorAll('.cell')
+        for( let i = 0; i < cells.length; i++){
+            const cell= cells[i];
+            cell.removeEventListener('click', clickOnCell);
+            const cellNumber=parseInt(cell.innerText);
+            if(bombs.includes(cellNumber)) cell.classList.add('bomb');
+        }
+    }
     //creo bombe
     const generateBomb=(totalBombs, totalNumber) => {
         const bombs=[];

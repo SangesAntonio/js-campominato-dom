@@ -55,7 +55,7 @@
     width: 600px;
     height: 600px;
     border: 1px solid rgb(196, 241, 72);
-    overflow-y: auto;
+    
 }
 
 .cell{
@@ -69,12 +69,19 @@
 
 .clicked{
     background-color: rgb(65, 177, 192);
+    cursor: not-allowed;
 }
 
 .bomb{
     background-color: red;
+    cursor: not-allowed;
 }
 
 .safe{
+    cursor: not-allowed;
     background-color: rgb(65, 177, 192);
+}
+.message{
+    color:rgb(241, 222, 56);
+    font-size: 34px;
 }

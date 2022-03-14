@@ -5,6 +5,8 @@
 }
 body{
     background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/231740/b005400b3e20462c20269c300b2ba71c3d541d6d.jpg);
+    background-repeat: norepeat;
+    background-size: cover;
 }
 
 /*container*/
